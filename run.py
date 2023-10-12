@@ -83,3 +83,59 @@ def display_hangman(tries):
     ]
     return stages[tries]
 
+def play_hangman():
+    print("Welcome to Hangman!")
+    start_game = input("Press 'y' to start the game: ").strip().lower()
+    
+    if start_game != 'y':
+        return
+    
+    difficulty = ""
+    while difficulty not in ["easy", "medium", "hard"]:
+        difficulty = input("Choose difficulty (easy, medium, hard): ").strip().lower()
+    
+    word = choose_word(difficulty)
+    word_completion = "_" * len(word)  
+    guessed = False  
+    guessed_letters = []
+    tries = 6
+    
+    print("Let's play Hangman!")
+    print(display_hangman(tries))
+    print(word_completion)
+    print("\n")
+    
+    while not guessed and tries > 0:
+        guess = input("Please guess a letter: ").lower()
+        
+        if len(guess) == 1 and guess.isalpha():
+            if guess in guessed_letters:
+                print("You already guessed", guess)
+            elif guess not in word:
+                print(guessed, "is not in the word.")
+                tries -= 1
+                guessed_letters.append(guess)
+                print("Guessed Letters:", guessed_letters)
+                print("Remaining tries:", tries)
+            else:
+                print("Good job,", guess, "is in the word!")
+                guessed_letters.append(guess)
+                word_as_list = list(word_completion)
+                indices = [i for i, letter in enumerate(word) if letter == guess]
+                for index in indices:
+                    word_as_list[index] = guess
+                word_completion = "".join(word_as_list)
+                if "_" not in word_completion:
+                    guessed = True
+
+        print(display_hangman(tries))
+        print(word_completion)
+        print("\n")
+        
+    if guessed:
+        print("Congrats, you guessed the word! You win!")
+        else:
+        print("Sorry, you ran out of tries. The word was " + word + ". Maybe next time!")
+
+if __name__ == "__main__":
+    play_hangman()
