@@ -1,13 +1,27 @@
 import random
 import os
 
-def choose_word(difficulty):
+def choose_word(category, difficulty):
     words = {
-        "easy": ["apple", "banana", "cherry", "date"],
-        "medium": ["papaya", "pineapple", "raspberry"],
-        "hard": ["kiwifruit", "strawberry", "blackberry"]
+        "foods": {
+            "easy": ["apple", "banana", "cherry", "date"],
+            "medium": ["papaya", "pineapple", "raspberry"],
+            "hard": ["kiwifruit", "strawberry", "blackberry"]
+        },
+        "cars": {
+            "easy": ["bmw", "audi", "ford"],
+            "medium": ["toyota", "chevrolet", "honda"],
+            "hard": ["mercedes", "ferrari", "lamborghini"]
+        },
+        "countries": {
+            "easy": ["usa", "austria", "turkey", "hungary", "sweden", "russia"],
+            "medium": ["afghanistan", "kazachstan", "turkmenistan", "thailand"],
+            "hard": ["liechtenstein", "kenya", "madagascar", "myanmar", "bangladesh", "nepal"]
+        }
     }
-    return random.choice(words[difficulty])
+    
+    return random.choice(words[category][difficulty])
+
 
 def display_hangman(tries):
     stages = [  # final state: head, torso, both arms, and both legs
@@ -89,12 +103,16 @@ def play_hangman():
     
     if start_game != 'y':
         return
+
+    category = ""
+    while category not in ["foods", "cars", "countries"]:
+        category = input("Which category of words would you like to guess (foods/cars/countries)? ").strip().lower()
     
     difficulty = ""
     while difficulty not in ["easy", "medium", "hard"]:
         difficulty = input("Choose difficulty (easy, medium, hard): ").strip().lower()
     
-    word = choose_word(difficulty)
+    word = choose_word(category, difficulty)
     word_completion = "_" * len(word)  
     guessed = False  
     guessed_letters = []
