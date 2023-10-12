@@ -134,7 +134,7 @@ def play_hangman():
         
     if guessed:
         print("Congrats, you guessed the word! You win!")
-        else:
+    else:
         print("Sorry, you ran out of tries. The word was " + word + ". Maybe next time!")
 
 if __name__ == "__main__":
