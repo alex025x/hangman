@@ -4,19 +4,19 @@ import os
 def choose_word(category, difficulty):
     words = {
         "foods": {
-            "easy": ["burger", "banana", "sushi", "pizza", "orange"],
-            "medium": ["papaya", "lasagna", "raspberry", "pudding", "kebab"],
-            "hard": ["prune", "strawberry", "wasabi", "nachos", "borscht"]
+            "easy": ["burger", "banana", "sushi", "pizza", "orange", "shrimp", "steak", "cake"],
+            "medium": ["papaya", "lasagna", "raspberry", "pudding", "kebab", "paprika", "soup"],
+            "hard": ["prune", "strawberry", "wasabi", "nachos", "borscht", "quinoa", "gnocchi"]
         },
         "cars": {
-            "easy": ["bmw", "audi", "ford", "mini", "lexus", "subaru", "mazda"],
-            "medium": ["toyota", "chevrolet", "honda", "dacia", "porsche", "opel"],
-            "hard": ["mercedes", "ferrari", "lamborghini", "delorean", "koenigsegg"]
+            "easy": ["bmw", "audi", "ford", "mini", "lexus", "subaru", "mazda", "renault", "fiat", "hyundai", "kia"],
+            "medium": ["toyota", "chevrolet", "honda", "dacia", "porsche", "opel", "pagani", "bentley", "volkswagen"],
+            "hard": ["mercedes", "ferrari", "lamborghini", "delorean", "koenigsegg", "detomaso", "holden", "rimac"]
         },
         "countries": {
-            "easy": ["usa", "austria", "turkey", "hungary", "sweden", "russia"],
-            "medium": ["afghanistan", "kazachstan", "turkmenistan", "thailand", "panama"],
-            "hard": ["liechtenstein", "kenya", "madagascar", "myanmar", "bangladesh", "nepal"]
+            "easy": ["usa", "austria", "turkey", "hungary", "sweden", "russia", "italy", "mexico", "belgium"],
+            "medium": ["afghanistan", "kazachstan", "turkmenistan", "thailand", "panama", "switzerland", "netherlands"],
+            "hard": ["liechtenstein", "kenya", "madagascar", "myanmar", "bangladesh", "nepal", "djibouti", "kyrgyzstan"]
         }
     }
     
@@ -94,6 +94,7 @@ def display_hangman(tries):
                    |     
                    -
                 """
+                
     ]
     return stages[tries]
 
@@ -153,9 +154,12 @@ def play_hangman():
                 word_completion = "".join(word_as_list) # Convert back to string
                 if "_" not in word_completion:
                     guessed = True
+        elif len(guess) > 1:
+            print("Error: Only one letter a a time allowed")
+
         else:
-                print("Error: Only letters allowed")
-                continue # Skip the rest of the loop if the input is invalid
+            print("Error: Only letters allowed")
+            continue # Skip the rest of the loop if the input is invalid
 
         print(display_hangman(tries))
         print(word_completion)
