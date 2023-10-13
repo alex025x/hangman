@@ -9,7 +9,7 @@ def choose_word(category, difficulty):
             "hard": ["prune", "strawberry", "wasabi", "nachos", "borscht"]
         },
         "cars": {
-            "easy": ["bmw", "audi", "ford", "mini", "lexus", "subaru"],
+            "easy": ["bmw", "audi", "ford", "mini", "lexus", "subaru", "mazda"],
             "medium": ["toyota", "chevrolet", "honda", "dacia", "porsche", "opel"],
             "hard": ["mercedes", "ferrari", "lamborghini", "delorean", "koenigsegg"]
         },
@@ -118,7 +118,7 @@ def play_hangman():
     
     difficulty = ""
     while difficulty not in ["easy", "medium", "hard"]:
-        difficulty = input("Choose difficulty (easy, medium, hard): ").strip().lower()
+        difficulty = input("Choose word difficulty (easy, medium, hard): ").strip().lower()
     
     word = choose_word(category, difficulty)
     word_completion = "_" * len(word)  
@@ -153,6 +153,9 @@ def play_hangman():
                 word_completion = "".join(word_as_list) # Convert back to string
                 if "_" not in word_completion:
                     guessed = True
+        else:
+                print("Error: Only letters allowed")
+                continue # Skip the rest of the loop if the input is invalid
 
         print(display_hangman(tries))
         print(word_completion)
