@@ -98,6 +98,28 @@ def display_hangman(tries):
     ]
     return stages[tries]
 
+def print_logo_and_explanation():
+    logo = """
+ 
+    ██╗░░██╗░█████╗░███╗░░██╗░██████╗░███╗░░░███╗░█████╗░███╗░░██╗
+    ██║░░██║██╔══██╗████╗░██║██╔════╝░████╗░████║██╔══██╗████╗░██║
+    ███████║███████║██╔██╗██║██║░░██╗░██╔████╔██║███████║██╔██╗██║
+    ██╔══██║██╔══██║██║╚████║██║░░╚██╗██║╚██╔╝██║██╔══██║██║╚████║
+    ██║░░██║██║░░██║██║░╚███║╚██████╔╝██║░╚═╝░██║██║░░██║██║░╚███║
+    ╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝
+    """
+    print(logo)
+    explanation = (
+        "\nWelcome to Hangman!\n\n"
+        "How to Play:\n"
+        "1. Choose a category and difficulty level.\n"
+        "2. Try to guess the word - one letter at a time.\n"
+        "3. You can make up to 6 wrong guesses.\n"
+        "4. If you guess the word before running out of tries, you win!\n"
+        "5. Have fun!\n"
+    )
+    print(explanation)
+
 def play_again():
     while True:
         play_again_input = input("Would you like to play again? (y/n) ").strip().lower()
@@ -107,7 +129,7 @@ def play_again():
             print("Invalid input. Please enter 'y' or 'n'.")
 
 def play_hangman():
-    print("Welcome to Hangman!")
+    print_logo_and_explanation()
     start_game = input("Press 'y' to start the game: ").strip().lower()
     
     if start_game != 'y':
@@ -166,13 +188,15 @@ def play_hangman():
         print("\n")
         
     if guessed:
-        print("Congrats, you guessed the word! You win!")
+        print("Congrats, you guessed the word! You win ( ͡ᵔ ͜ʖ ͡ᵔ)")
     else:
-        print("Sorry, you ran out of tries. The word was " + word + ". Maybe next time!")
+        print("Sorry, you ran out of tries. The word was " + word + ". Maybe next time! ( ͡ᵔ ︵ ͡ᵔ)")
 
     return play_again()
 
 if __name__ == "__main__":
-    while play_hangman():
-        pass
-    print("Thank you for playing, have a nice day!")
+    while play_hangman(): # Executes hangman game in a continuous loop.
+        pass # If user chooses no prints message"
+    print("Thank you for playing, have a nice day! ┏( ͡ᵔ _⦣ ͡ᵔ)┛ ")
+
+
