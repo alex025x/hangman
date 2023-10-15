@@ -2,7 +2,7 @@ import random
 import os
 
 
-def choose_word(category, difficulty):
+def choose_word(category, difficulty):  # Lists of words for dif categories
     words = {
         "foods": {
             "easy": [
@@ -127,7 +127,8 @@ def display_hangman(tries):
     return stages[tries]
 
 
-def print_logo_and_explanation():
+def print_logo_and_explanation():  # Welcome message for the game
+    # and information about the game
     logo = """
     ██╗░░██╗░█████╗░███╗░░██╗░██████╗░███╗░░░███╗░█████╗░███╗░░██╗
     ██║░░██║██╔══██╗████╗░██║██╔════╝░████╗░████║██╔══██╗████╗░██║
@@ -162,29 +163,32 @@ def play_again():  # Prompts user to play again, validates input.
 def play_hangman():
     print_logo_and_explanation()
 
+    # Prompt user to start the game
     start_game = input("Press 'y' to start the game: ").strip().lower()
 
+    # Validate user input for starting the game
     while start_game != 'y':
         print("Error, please press 'y' to start game")  # Error message
         start_game = input("Press 'y' to start the game: ").strip().lower()
 
-
+    # Initialize category variable
     category = ""
     while category not in ["foods", "cars", "countries"]:
         category = input(
             "Which category of words would you like to guess "
             "(foods/cars/countries)? "
-    ).strip().lower()
-    
+        ).strip().lower()
+
         if category not in ["foods", "cars", "countries"]:
             print("Error Message: Please choose foods, cars, or countries.")
 
+    # Initialize difficulty variable
     difficulty = ""
     while difficulty not in ["easy", "medium", "hard"]:
         difficulty = input(
             "Choose word difficulty (easy, medium, hard): "
         ).strip().lower()
-        
+
         if difficulty not in ["easy", "medium", "hard"]:
             print("Error Message: Please choose easy, medium, or hard.")
 
