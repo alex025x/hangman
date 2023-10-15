@@ -153,7 +153,7 @@ def print_logo_and_explanation():  # Welcome message for the game
 def play_again():  # Prompts user to play again, validates input.
     while True:
         play_again_input = input(
-            "Would you like to play again? (y/n) ").strip().lower()
+            "\nWould you like to play again? (y/n) ").strip().lower()
         if play_again_input in ['y', 'n']:
             return play_again_input == 'y'
         else:
@@ -164,7 +164,7 @@ def play_hangman():
     print_logo_and_explanation()
 
     # Prompt user to start the game
-    start_game = input("Press 'y' to start the game: ").strip().lower()
+    start_game = input("Press 'y' to start the game: " + "\n").strip().lower()
 
     # Validate user input for starting the game
     while start_game != 'y':
@@ -176,7 +176,7 @@ def play_hangman():
     while category not in ["foods", "cars", "countries"]:
         category = input(
             "Which category of words would you like to guess "
-            "(foods/cars/countries)? "
+            "(foods/cars/countries)? " + "\n"
         ).strip().lower()
 
         if category not in ["foods", "cars", "countries"]:
@@ -186,7 +186,7 @@ def play_hangman():
     difficulty = ""
     while difficulty not in ["easy", "medium", "hard"]:
         difficulty = input(
-            "Choose word difficulty (easy, medium, hard): "
+            "Choose word difficulty (easy, medium, hard): " + "\n"
         ).strip().lower()
 
         if difficulty not in ["easy", "medium", "hard"]:
@@ -198,13 +198,13 @@ def play_hangman():
     guessed_letters = []
     tries = 6
 
-    print("Let's play Hangman!")
+    print("\n" + "Let's play Hangman!")
     print("\n" + display_hangman(tries))
     print(word_completion)
     print("\n")
 
     while not guessed and tries > 0:  # Main game loop
-        guess = input("Please guess a letter: ").lower()
+        guess = input("\nPlease guess a letter: ").lower()
 
         if len(guess) == 1 and guess.isalpha():  # Validate input
             if guess in guessed_letters:
@@ -234,14 +234,14 @@ def play_hangman():
             print("Error: Only letters allowed")
             continue  # Skip the rest of the loop if the input is invalid
 
-        print(display_hangman(tries) + "\n")
+        print("\n" + display_hangman(tries) + "\n")
         print(word_completion + "\n")
         print("\n")
 
     if guessed:
-        print("Congrats, you guessed the word! You win ( ͡ᵔ ͜ʖ ͡ᵔ)")
+        print("\nCongrats, you guessed the word! You win ( ͡ᵔ ͜ʖ ͡ᵔ)")
     else:
-        print("Sorry, you ran out of tries. The word was " +
+        print("\nSorry, you ran out of tries. The word was " +
               word + ". Maybe next time! ( ͡ᵔ ︵ ͡ᵔ)")
 
     return play_again()
@@ -250,4 +250,4 @@ def play_hangman():
 if __name__ == "__main__":
     while play_hangman():  # Executes hangman game in a continuous loop.
         pass  # If user chooses no, print message
-    print("Thank you for playing, have a nice day! ┏( ͡ᵔ _⦣ ͡ᵔ)┛ ")
+    print("\nThank you for playing, have a nice day! ┏( ͡ᵔ _⦣ ͡ᵔ)┛ ")
