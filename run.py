@@ -166,10 +166,13 @@ def play_hangman():
     if start_game != 'y':
         return
 
-    category = input(
-        "Which category of words would you like to guess "
-        "(foods/cars/countries)? "
+    category = ""
+    while category not in ["foods", "cars", "countries"]:
+        category = input(
+            "Which category of words would you like to guess "
+            "(foods/cars/countries)? "
     ).strip().lower()
+    
 
     difficulty = ""
     while difficulty not in ["easy", "medium", "hard"]:
