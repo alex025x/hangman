@@ -146,7 +146,7 @@ def print_logo_and_explanation():
         "4. If you guess the word before running out of tries, you win!\n"
         "5. Have fun!\n"
     )
-    print(explanation)
+    print(explanation + "\n")
 
 
 def play_again():  # Prompts user to play again, validates input.
@@ -195,7 +195,7 @@ def play_hangman():
     tries = 6
 
     print("Let's play Hangman!")
-    print(display_hangman(tries))
+    print("\n" + display_hangman(tries))
     print(word_completion)
     print("\n")
 
@@ -230,8 +230,8 @@ def play_hangman():
             print("Error: Only letters allowed")
             continue  # Skip the rest of the loop if the input is invalid
 
-        print(display_hangman(tries))
-        print(word_completion)
+        print(display_hangman(tries) + "\n")
+        print(word_completion + "\n")
         print("\n")
 
     if guessed:
