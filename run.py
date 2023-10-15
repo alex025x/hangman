@@ -149,7 +149,7 @@ def print_logo_and_explanation():
     print(explanation)
 
 
-def play_again():
+def play_again():  # Prompts user to play again, validates input.
     while True:
         play_again_input = input(
             "Would you like to play again? (y/n) ").strip().lower()
@@ -176,11 +176,17 @@ def play_hangman():
             "(foods/cars/countries)? "
     ).strip().lower()
     
+        if category not in ["foods", "cars", "countries"]:
+            print("Error Message: Please choose foods, cars, or countries.")
 
     difficulty = ""
     while difficulty not in ["easy", "medium", "hard"]:
         difficulty = input(
-            "Choose word difficulty (easy, medium, hard): ").strip().lower()
+            "Choose word difficulty (easy, medium, hard): "
+        ).strip().lower()
+        
+        if difficulty not in ["easy", "medium", "hard"]:
+            print("Error Message: Please choose easy, medium, or hard.")
 
     word = choose_word(category, difficulty)
     word_completion = "_" * len(word)
