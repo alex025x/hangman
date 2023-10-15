@@ -161,10 +161,13 @@ def play_again():
 
 def play_hangman():
     print_logo_and_explanation()
+
     start_game = input("Press 'y' to start the game: ").strip().lower()
 
-    if start_game != 'y':
-        return
+    while start_game != 'y':
+        print("Error, please press 'y' to start game")  # Error message
+        start_game = input("Press 'y' to start the game: ").strip().lower()
+
 
     category = ""
     while category not in ["foods", "cars", "countries"]:
