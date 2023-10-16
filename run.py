@@ -150,7 +150,10 @@ def print_logo_and_explanation():  # Welcome message for the game
     print(explanation + "\n")
 
 
-def play_again():  # Prompts user to play again, validates input.
+def play_again(): 
+    """
+    Prompts user to play again, validates input.
+    """
     while True:
         play_again_input = input(
             "\nWould you like to play again? (y/n) ").strip().lower()
@@ -228,7 +231,7 @@ def play_hangman():
                 if "_" not in word_completion:
                     guessed = True
         elif len(guess) > 1:
-            print("Error: Only one letter a a time allowed")
+            print("Error: Only one letter at a time allowed")
 
         else:
             print("Error: Only letters allowed")
