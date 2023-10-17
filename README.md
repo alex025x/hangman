@@ -1,7 +1,7 @@
 # Hangman-game
 This Python-based Hangman game enables users to guess words, categorized into different topics and difficulty levels, by iteratively selecting letters, while visually tracking incorrect guesses through ASCII hangman illustrations.
 
-You can find the live link here: [Hangman-game](https://hangman-game-alex025x-549bc0e24f72.herokuapp.com/)
+You can find the live link here: [Hangman-game](https://hangman-alex025x-fe0e2eb59e31.herokuapp.com/)
 
 ![Responsive](./assets/images/responsive.png)
 
