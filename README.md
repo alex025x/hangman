@@ -1,6 +1,38 @@
 # Hangman-game
 This Python-based Hangman game enables users to guess words, categorized into different topics and difficulty levels, by iteratively selecting letters, while visually tracking incorrect guesses through ASCII hangman illustrations.
 
+You can find the live link here: [Hangman-game](https://hangman-game-alex025x-549bc0e24f72.herokuapp.com/)
+
+![Responsive](./assets/images/responsive.png)
+
+---
+
+# Table of Contents
+
+---
+
+- [Hangman-game](#hangman-game)
+- [Overview](#overview)
+  - [Project](#project)
+- [Game Structure](#game-structure)
+  - [Start Screen](#start-screen)
+  - [Category and Difficulty Selection](#category-and-difficulty-selection)
+  - [Input Validation](#input-validation)
+  - [Main Game](#main-game)
+  - [End of Round](#end-of-round)
+- [Potential future updates](#potential-future-updates)
+- [Hangman Game primary components](#hangman-game-primary-components)
+  - [1. Word Management](#1-word-management)
+  - [2. Display Management](#2-display-management)
+  - [3. Game Flow & Logic](#3-game-flow--logic)
+- [Testing](#testing)
+  - [Validator Testing](#validator-testing)
+  - [Hangman Game - Manual Testing](#hangman-game---manual-testing)
+- [Technologies](#technologies)
+- [Bugs](#bugs)
+- [Credits](#credits)
+
+
 # Overview
   ## Project
    The game starts with the games logo and a welcome introduction and explanation of the game.
@@ -16,13 +48,21 @@ This Python-based Hangman game enables users to guess words, categorized into di
 - **Instructions:** Provides easy-to-understand instructions for how to play.
 - **Game Initiation:** Player begins the game by pressing 'y'.
 
+![Start screen](./assets/images/start-screen.png)
+
 ## Category and Difficulty Selection
 - **Category Choice:** Player selects a word category (foods, cars, countries).
 - **Difficulty Choice:** Player selects a difficulty level (easy, medium, hard).
 
+![Category and Difficulty](./assets/images/category-difficulty.png)
+
 ## Input Validation
 - **Correct Input:** Ensures the player’s input adheres to acceptable parameters (e.g., 'y' to start, valid category, and difficulty).
 - **Error Messaging:** Informative error messages guide the player towards valid inputs.
+
+![Input Validation](./assets/images/input-validation.png)
+
+![Input Validation2](./assets/images/input-validation2.png)
 
 ## Main Game 
 - **Word Representation:** Displays underscores (_) representing the secret word's letters.
@@ -30,54 +70,71 @@ This Python-based Hangman game enables users to guess words, categorized into di
 - **Hangman Figure:** Incorrect guesses visually build a hangman drawing and guessess become less.
 - **Guessed Letters:** Displays a list to track and show letters the player has already guessed.
 
+![Main Game](./assets/images/main-game.png)
+
 ## End of Round
 - **Outcome:** Reveals whether the player won or lost and shows the correct word.
 - **Replay Option:** Presents the player with the choice to play again or exit.
 
+![End of round](./assets/images/round-end.png)
+
 ## Potential future updates
  Future updates for the Hangman game include better player experience through expanded and customizable word categories, the addition of user profiles and competitive leaderboards, along with a notable uplift in graphical and user interaction, moving from ASCII to a more vibrant and intuitive UI/UX.
 
-# Class-Based Data Model
+# Hangman Game primary components
 
-The game consists of 3 main classes, `WordManager`, `GameManager` and `play_hangman()` . These 2 classes create the base structure of the game mechanics.
+This Hangman game allows the user to guess words from chosen categories and difficulty levels. Below are the primary components and functions utilized in the game:
 
-### Class 1: `WordManager`
-**Responsibility:** Manages word retrieval and masking based on player choices.
+## 1. Word Management
+Handles the selection and representation of words for the game.
 
-#### Attributes:
-- `categories`: Available word categories.
-- `difficulties`: Available difficulty levels.
+### Functions:
+#### **choose_word(category, difficulty)**:
+  - **Description**: Chooses a word based on the given category and difficulty.
+  - **Parameters**:
+    - `category`: The theme of the word (e.g., foods, cars, countries).
+    - `difficulty`: The level of difficulty (e.g., easy, medium, hard).
+  - **Returns**: A randomly selected word from the specified category and difficulty.
 
-#### Methods:
-- `get_word(category, difficulty)`: Retrieves a word matching player preferences.
-- `mask_word(word, guessed_letters)`: Masks the word, revealing guessed letters.
+### Data:
+#### **words dictionary**:
+  - **Description**: Contains lists of words categorized by theme and difficulty level.
 
-### Class 2: `GameManager`
-**Responsibility:** Manages gameplay logic, status updates, and user interactions.
+## 2. Display Management
+Manages the visual representation of the game.
 
-#### Attributes:
-- `max_attempts`: Maximum incorrect guesses allowed.
-- `guessed_letters`: Letters guessed by the player.
-- `incorrect_attempts`: Number of incorrect guesses.
+### Functions:
+#### **display_hangman(tries)**:
+  - **Description**: Displays the hangman figure based on the number of incorrect tries.
+  - **Parameters**: 
+    - `tries`: Number of incorrect guesses made by the player.
+  - **Returns**: A visual representation of the hangman figure for the current game state.
 
-#### Methods:
-- `get_guess()`: Obtains and validates player's letter guess.
-- `update_game_status(guessed_letter)`: Updates gameplay variables based on recent guess.
-- `display_status()`: Showcases the current gameplay status.
-- `display_outcome()`: Informs player of the round’s outcome.
+#### **print_logo_and_explanation()**:
+  - **Description**: Outputs the game's logo and provides an explanation of how to play.
+  - **Returns**: Printed logo and game instructions.
 
-#### Methods:
-- `print_logo_and_explanation()`: Displays the game logo and instructions.
-- `select_category()`: Prompts and validates category selection.
-- `select_difficulty()`: Prompts and validates difficulty selection.
-- `replay_prompt()`: Asks the player if they wish to play again.
+## 3. Game Flow & Logic
+Controls the game's main loop, logic, and interactions with the user.
 
-## Main Loop: `play_hangman()`
-In an object-oriented adaptation, the main loop could instantiate objects of these classes and coordinate their methods to facilitate the gameplay. It initiates game start, loops through player guesses while managing game status, and concludes the round, potentially looping into a new game or ending as per player input.
+### Functions:
+#### **play_hangman()**:
+  - **Description**: The main game loop where players guess letters and the game determines the outcome based on the guesses.
+  - **Returns**: Boolean value indicating if the user wants to play another round.
+
+#### **play_again()**:
+  - **Description**: Prompts the user to decide if they want to play another round.
+  - **Returns**: Boolean value (True if the user wants to play again, False otherwise).
+
+### Game Initialization:
+The game prompts the user to start, choose a category, and select a difficulty level. It then engages the player in rounds of guessing letters, displaying progress, and determining the game outcome.
+
 
 # Testing
 
 ## Validator Testing
+
+![Validator Testing](./assets/images/validator-testing.png)
 
 
 # Hangman Game - Manual Testing
@@ -115,6 +172,8 @@ In an object-oriented adaptation, the main loop could instantiate objects of the
 ### Results:
 - Error message displayed: "Error Message: Please choose foods, cars, or countries."
 
+![Error Message](./assets/images/error-message1.png)
+
 ---
 
 ## **Test Scenario 3: Difficulty Selection**
@@ -134,6 +193,8 @@ In an object-oriented adaptation, the main loop could instantiate objects of the
 ### Results:
 - Error message displayed: "Error Message: Please choose easy, medium, or hard."
 
+![Error Message](./assets/images/error-message2.png)
+
 ---
 
 ## **Test Scenario 4: Guess a Letter**
@@ -152,7 +213,12 @@ In an object-oriented adaptation, the main loop could instantiate objects of the
 ### Results:
 1. Feedback displayed depending on whether the letter is in the word.
 2. Error message displayed: "Error: Only letters allowed"
+
+![Error Message](./assets/images/error-message3.png)
+
 3. Error message displayed: "Error: Only one letter a time allowed"
+
+![Error Message](./assets/images/error-message4.png)
 
 ---
 
@@ -163,7 +229,14 @@ In an object-oriented adaptation, the main loop could instantiate objects of the
 
 ### Results:
 - Upon guessing the entire word correctly, a congratulatory message is displayed.
+
+![Congrats](./assets/images/congrats-message.png)
+
 - Upon using up all attempts without guessing the word, a message with the correct word and encouragement to try again is displayed.
+
+![Next Time](./assets/images/next-time.png)
+
+
 
 ---
 
@@ -182,12 +255,17 @@ In an object-oriented adaptation, the main loop could instantiate objects of the
 1. Restarted the game.
 2. Displayed the message: "Thank you for playing, have a nice day! ┏( ͡ᵔ _⦣ ͡ᵔ)┛ "
 
+![Play Again](./assets/images/play-again.png)
+
 ### Test Input:
 
 1. r
 
 ### Results:
 1. Displayed the message: "Invalid input. Please enter 'y' or 'n'."
+
+![Invalid Input](./assets/images/play-again2.png)
+
 ---
 
 ## **Conclusion**:
@@ -208,6 +286,8 @@ When the player was asked to enter "y" to start the game the game kept looping t
 ### Solution:
 
 Add != instead of === to while_start_game inside the play_hangman() function.
+
+![Error Fixed](./assets/images/code-error-fixed.png)
 
 # Credits 
 
