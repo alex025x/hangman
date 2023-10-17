@@ -269,7 +269,7 @@ The game prompts the user to start, choose a category, and select a difficulty l
 ---
 
 ## **Conclusion**:
-The game mostly functions as expected, and the majority of user interactions are handled correctly. Error handling seems to be effective for the inputs tested. 
+The game functions as expected, and user interactions are handled correctly.
 
 # Technologies
 
@@ -295,7 +295,7 @@ Add != instead of === to while_start_game inside the play_hangman() function.
 
 - [Reddit](https://https://www.reddit.com/r/Python/) this subreddit has been a big help in explaining to me Modular Programming for my project.
 
-- [Fsymbols](https://fsymbols.com/generators/) great tool for creating the temporary game logo.
+- [Fsymbols](https://fsymbols.com/generators/) great tool and helped me create the temporary game logo.
 
 [Back to Top](#)
 
