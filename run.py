@@ -150,7 +150,7 @@ def print_logo_and_explanation():  # Welcome message for the game
     print(explanation + "\n")
 
 
-def play_again(): 
+def play_again():
     """
     Prompts user to play again, validates input.
     """
@@ -196,7 +196,7 @@ def play_hangman():
             print("Error Message: Please choose easy, medium, or hard.")
 
     word = choose_word(category, difficulty)
-    word_completion = "_" * len(word)
+    word_completion = " ".join("_" for _ in word)
     guessed = False
     guessed_letters = []
     tries = 6
@@ -225,7 +225,7 @@ def play_hangman():
                 indices = [i for i, letter in enumerate(
                     word) if letter == guess]
                 for index in indices:
-                    word_as_list[index] = guess  # Update guessed letters
+                    word_as_list[index * 2] = guess  # Update guessed letters
                 # Convert back to string
                 word_completion = "".join(word_as_list)
                 if "_" not in word_completion:
